@@ -7,6 +7,16 @@ form div {
   margin-top: 5px;
 }
 
+.resume-wrapper {
+  border: #02020254 1px solid;
+  box-shadow: 3px 3px 10px 1px #00000047;
+  padding: 1.5rem;
+}
+
+.edit {
+  margin-top: 10px;
+}
+
 textarea {
   resize: none;
 }

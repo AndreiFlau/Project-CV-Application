@@ -179,50 +179,54 @@ function Resume() {
     <div className="resume">
       {toggle ? (
         <>
-          <div className="general-info-display">
-            <p>{resumeInfo.name + " " + resumeInfo.surname}</p>
-            <p>{resumeInfo.email}</p>
-            <p>{resumeInfo.phone}</p>
+          <div className="resume-wrapper">
+            <div className="general-info-display">
+              <p>Name: {resumeInfo.name + " " + resumeInfo.surname}</p>
+              <p>Email: {resumeInfo.email}</p>
+              <p>Phone Number: {resumeInfo.phone}</p>
+            </div>
+            <div className="education-display">
+              <p>
+                Studied at {resumeInfo.schoolName}. Finished his studies on {resumeInfo.studyTitle} at {resumeInfo.studyDate}.
+              </p>
+            </div>
+            <div className="experience-display">
+              <p>
+                Worked for {resumeInfo.companyName} at the position of {resumeInfo.position} from {resumeInfo.workedFrom} to{" "}
+                {resumeInfo.workedUntil}. Having the following responsibilities: {resumeInfo.responsibilities}
+              </p>
+            </div>
           </div>
-          <div className="education-display">
-            <p>{resumeInfo.schoolName}</p>
-            <p>{resumeInfo.studyTitle}</p>
-            <p>{resumeInfo.studyDate}</p>
-          </div>
-          <div className="experience-display">
-            <p>{resumeInfo.companyName}</p>
-            <p>{resumeInfo.position}</p>
-            <p>{resumeInfo.responsibilities}</p>
-            <p>{resumeInfo.workedFrom}</p>
-            <p>{resumeInfo.workedUntil}</p>
-          </div>
-          <button onClick={handleEdit}>Edit</button>
+          <button onClick={handleEdit} className="edit">
+            Edit
+          </button>
         </>
       ) : (
         <form onSubmit={handleSubmit}>
-          <GeneralInfo
-            name={resumeInfo.name}
-            surname={resumeInfo.surname}
-            email={resumeInfo.email}
-            phone={resumeInfo.phone}
-            handleInput={handleInput}
-          />
-          <Education
-            schoolName={resumeInfo.schoolName}
-            studyTitle={resumeInfo.studyTitle}
-            studyDate={resumeInfo.studyDate}
-            handleInput={handleInput}
-          />
-          <Experience
-            companyName={resumeInfo.companyName}
-            position={resumeInfo.position}
-            responsibilities={resumeInfo.responsibilities}
-            workedFrom={resumeInfo.workedFrom}
-            workedUntil={resumeInfo.workedUntil}
-            handleInput={handleInput}
-          />
+          <div className="resume-wrapper">
+            <GeneralInfo
+              name={resumeInfo.name}
+              surname={resumeInfo.surname}
+              email={resumeInfo.email}
+              phone={resumeInfo.phone}
+              handleInput={handleInput}
+            />
+            <Education
+              schoolName={resumeInfo.schoolName}
+              studyTitle={resumeInfo.studyTitle}
+              studyDate={resumeInfo.studyDate}
+              handleInput={handleInput}
+            />
+            <Experience
+              companyName={resumeInfo.companyName}
+              position={resumeInfo.position}
+              responsibilities={resumeInfo.responsibilities}
+              workedFrom={resumeInfo.workedFrom}
+              workedUntil={resumeInfo.workedUntil}
+              handleInput={handleInput}
+            />
+          </div>
           <button>Submit</button>
-          <button onClick={handleEdit}>Edit</button>
         </form>
       )}
     </div>
