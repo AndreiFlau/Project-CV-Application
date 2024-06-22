@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import "../styles/Resume.css";
 
 function Experience({ companyName, position, responsibilities, workedFrom, workedUntil, handleInput }) {
   // function handleDate(startDate, endDate){
@@ -15,6 +16,7 @@ function Experience({ companyName, position, responsibilities, workedFrom, worke
         value={companyName}
         placeholder="Company Inc."
         onChange={(e) => handleInput("companyName", e.target.value)}
+        required
       />
       <label htmlFor="position">Your position:</label>
       <input
@@ -23,14 +25,17 @@ function Experience({ companyName, position, responsibilities, workedFrom, worke
         value={position}
         placeholder="Engineer"
         onChange={(e) => handleInput("position", e.target.value)}
+        required
       />
       <label htmlFor="responsibilities">Responsibilities:</label>
-      <input
-        type="text"
+      <textarea
+        rows="4"
+        cols="50"
         id="responsibilities"
         value={responsibilities}
         placeholder="I did this and that..."
         onChange={(e) => handleInput("responsibilities", e.target.value)}
+        required
       />
       <label htmlFor="worked-from">Worked from:</label>
       <input
@@ -39,6 +44,7 @@ function Experience({ companyName, position, responsibilities, workedFrom, worke
         value={workedFrom}
         placeholder="2000-10-10"
         onChange={(e) => handleInput("workedFrom", e.target.value)}
+        required
       />
       <label htmlFor="worked-until">Worked until:</label>
       <input
@@ -47,6 +53,7 @@ function Experience({ companyName, position, responsibilities, workedFrom, worke
         value={workedUntil}
         placeholder="2000-11-25"
         onChange={(e) => handleInput("workedUntil", e.target.value)}
+        required
       />
     </div>
   );
@@ -62,6 +69,7 @@ function Education({ schoolName, studyTitle, studyDate, handleInput }) {
         value={schoolName}
         placeholder="My School"
         onChange={(e) => handleInput("schoolName", e.target.value)}
+        required
       />
       <label htmlFor="title-study">Title of Study:</label>
       <input
@@ -70,6 +78,7 @@ function Education({ schoolName, studyTitle, studyDate, handleInput }) {
         value={studyTitle}
         placeholder="Engineer"
         onChange={(e) => handleInput("studyTitle", e.target.value)}
+        required
       />
       <label htmlFor="date-study">Date of Study:</label>
       <input
@@ -78,6 +87,7 @@ function Education({ schoolName, studyTitle, studyDate, handleInput }) {
         value={studyDate}
         placeholder="1999-12-12"
         onChange={(e) => handleInput("studyDate", e.target.value)}
+        required
       />
     </div>
   );
@@ -87,7 +97,14 @@ function GeneralInfo({ name, surname, email, phone, handleInput }) {
   return (
     <div className="general-info">
       <label htmlFor="first-name">First Name:</label>
-      <input type="text" id="first-name" value={name} placeholder="John" onChange={(e) => handleInput("name", e.target.value)} />
+      <input
+        type="text"
+        id="first-name"
+        value={name}
+        placeholder="John"
+        onChange={(e) => handleInput("name", e.target.value)}
+        required
+      />
       <label htmlFor="surname">Surname:</label>
       <input
         type="text"
@@ -95,6 +112,7 @@ function GeneralInfo({ name, surname, email, phone, handleInput }) {
         value={surname}
         placeholder="Doe"
         onChange={(e) => handleInput("surname", e.target.value)}
+        required
       />
       <label htmlFor="email">Email:</label>
       <input
@@ -103,6 +121,7 @@ function GeneralInfo({ name, surname, email, phone, handleInput }) {
         value={email}
         placeholder="john@email.com"
         onChange={(e) => handleInput("email", e.target.value)}
+        required
       />
       <label htmlFor="phone">Phone Number:</label>
       <input
@@ -111,6 +130,7 @@ function GeneralInfo({ name, surname, email, phone, handleInput }) {
         value={phone}
         placeholder="+17252800241"
         onChange={(e) => handleInput("phone", e.target.value)}
+        required
       />
     </div>
   );
@@ -150,7 +170,8 @@ function Resume() {
     }
   }
 
-  function handleEdit() {
+  function handleEdit(e) {
+    e.preventDefault();
     setToggle(false);
   }
 
@@ -175,6 +196,7 @@ function Resume() {
             <p>{resumeInfo.workedFrom}</p>
             <p>{resumeInfo.workedUntil}</p>
           </div>
+          <button onClick={handleEdit}>Edit</button>
         </>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -200,9 +222,9 @@ function Resume() {
             handleInput={handleInput}
           />
           <button>Submit</button>
+          <button onClick={handleEdit}>Edit</button>
         </form>
       )}
-      <button onClick={handleEdit}>Edit</button>
     </div>
   );
 }

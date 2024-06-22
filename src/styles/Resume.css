@@ -1,0 +1,12 @@
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume * :not(:first-child) {
+  margin-top: 5px;
+}
+
+textarea {
+  resize: none;
+}
