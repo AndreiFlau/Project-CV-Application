@@ -1,1 +1,1 @@
-# Made with React + Vite
+Made with React + Vite
